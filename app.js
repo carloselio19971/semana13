@@ -5,12 +5,16 @@ let url="https://api.unsplash.com/search/photos?page=1&query=category&client_id=
 //let Arregloimagenes=[];
 let buscarInput=document.querySelector("#buscar-input");
 let contenedorImagenesGlobal=document.querySelector("#contenedor-imagenes"); 
+let limpiarInput=document.querySelector("#input-limpiar");
 
+console.log(limpiarInput);
 
 
 buscarInput.addEventListener('keypress',(e)=>{
+    let valor=e.target.value;
     if(e.key==='Enter'){
-        readPhotos(e.target.value)
+        readPhotos(valor);
+        limpiarInput.value="";
     }
 
 
@@ -30,7 +34,8 @@ async function  readPhotos(busqueda){
    //          Arregloimagenes.push(imagen);       
    //     });
    //     console.log(Arregloimagenes);
-     printHTML(resultado);
+   printHTML(resultado);
+   
  
 
 }
@@ -40,7 +45,7 @@ function  printHTML(resultado){
     limpiarHTML();
     console.log(resultado);
     contenedorImagenes="";
-    
+
     resultado.forEach(imagenes=>{
         contenedorImagenes+=`<div class="imagen">
                 <img
@@ -53,7 +58,7 @@ function  printHTML(resultado){
              </div>
             <div class="contenedor-iconos-imagenes">
              <div class="icono-1">
-             <img src="img/descargas.svg">
+             <img src="img/descargas-_1_.svg">
              </div>
             <div class="icono-2">
                  <img src="img/cinematografia.svg">
